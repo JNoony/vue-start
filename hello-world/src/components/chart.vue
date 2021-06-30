@@ -12,16 +12,15 @@
 </template>
 
 <script>
-import qs from "qs";
 import ECharts from 'vue-echarts';
 import 'echarts/lib/chart/pie';
-import pie from "./pie.js";
+// import pie from "./pie.js";
 // import CanvasRenderer from "echarts/renderers";
 // import PieChart from "echarts/charts";
 // import {
 //   TitleComponent,
-// //   TooltipComponent,
-// //   LegendComponent
+//   TooltipComponent,
+//   LegendComponent
 // } from "echarts/components";
 
 export default {
@@ -35,14 +34,13 @@ export default {
     props: {
     },
     data(){
-        const options = qs.parse(location.search, { ignoreQueryPrefix: true });
         return{
-            pie,
-            expand: {
-                pie: true,
-            },
+            // pie,
+            // expand: {
+            //     pie: true,
+            // },
             initOptions: {
-                renderer: options.renderer || "canvas"
+                renderer:  "canvas" //options.renderer ||
             },
             option: {
                 title: {

@@ -1,32 +1,16 @@
 <template>
   <div class="nav">
     <ul class="gnb">
-        <li class="gnb-list" @click="activeHandle">
-            <div class="mm">main gnb1</div>
+        <li class="gnb-list" 
+            v-for="(item,i) in gnbList" :key="i"
+            @click="activeHandle">
+            <div class="mm">{{item.maingnb}}</div>
             <ul class="sub">
-                <li class="sub-list" @click="activeHandle">sub gnb1</li>
-                <li class="sub-list" @click="activeHandle">sub gnb2</li>
-                <li class="sub-list" @click="activeHandle">sub gnb3</li>
-                <li class="sub-list" @click="activeHandle">sub gnb4</li>
-            </ul>
-        </li>
-        <li class="gnb-list" @click="activeHandle">
-            <div class="mm">main gnb2</div>
-            <ul class="sub">
-                <li class="sub-list" @click="activeHandle">sub gnb1</li>
-                <li class="sub-list" @click="activeHandle">sub gnb2</li>
-                <li class="sub-list" @click="activeHandle">sub gnb3</li>
-                <li class="sub-list" @click="activeHandle">sub gnb4</li>
-                <li class="sub-list" @click="activeHandle">sub gnb5</li>
-                <li class="sub-list" @click="activeHandle">sub gnb6</li>
-            </ul>
-        </li>
-        <li class="gnb-list" @click="activeHandle">
-            <div class="mm">main gnb3</div>
-            <ul class="sub">
-                <li class="sub-list" @click="activeHandle">sub gnb1</li>
-                <li class="sub-list" @click="activeHandle">sub gnb2</li>
-                <li class="sub-list" @click="activeHandle">sub gnb3</li>
+                <li class="sub-list" 
+                    v-for="(item,i) in item.subMenu" :key="i"
+                    @click="activeHandle">
+                  <a :href="item.link">{{item.sub}}</a>
+                </li>
             </ul>
         </li>
     </ul>
@@ -111,6 +95,33 @@ export default {
     data(){
       return{
           active:false,
+          gnbList:[
+            { maingnb:'main gnb1',
+              subMenu:[
+                {sub:'sub1',link:'/'},
+                {sub:'sub2',link:'/'},
+                {sub:'sub3',link:'/'},
+                {sub:'sub4',link:'/'},
+              ]
+            },
+            { maingnb:'main gnb2',
+              subMenu:[
+                {sub:'sub1',link:'/'},
+                {sub:'sub2',link:'/'},
+                {sub:'sub3',link:'/'},
+              ]
+            },
+            { maingnb:'main gnb3',
+              subMenu:[
+                {sub:'sub1',link:'/'},
+                {sub:'sub2',link:'/'},
+                {sub:'sub3',link:'/'},
+                {sub:'sub4',link:'/'},
+                {sub:'sub5',link:'/'},
+                {sub:'sub6',link:'/'},
+              ]
+            },
+          ]
       }
     },
     computed:{
@@ -133,49 +144,7 @@ export default {
                 target.classList.add('on');
             }
             else return false;
-            
-            
-            // if( target.classList.contains('mm') ){
-            //     // this.active = true;
-                
-            //     target.parentNode.classList.add('on');
-
-            //     console.log( target )
-            //     console.log( e.currentTarget )
-            //     console.log( e.currentTarget.parentNode )
-            //     console.log( targetParentParent.childNodes )
-            // }
-            // if( target.classList.contains('sub-list') ){
-            //     console.log()
-            // }
-            
-            
-            
-
-            // console.log( e.target.classList.contains('mm') )
         },
-        // activeRemoveClass(){
-        //     let gnbList = document.querySelectorAll('.gnb-list');
-        //     let subList = document.querySelectorAll('.sub li');
-        //     for(let i=0,len=gnbList.length;i<len;i++){
-        //         gnbList[i].classList.remove('on');
-        //     }
-        //     for(let j=0,len=gnbList.length;j<len;j++){
-        //         subList[j].classList.remove('on');
-        //     }
-        //     console.log( gnbList.length ); 
-        //     console.log( subList.length ); 
-        // },
-        // movePage(target){
-        //     this.$router.push({ name: target });
-        // },
-        // onResponsiveInverted () {
-        //     if (window.innerWidth < 1000) {
-        //         this.responsive = true
-        //     } else {
-        //         this.responsive = false
-        //     }
-        // },
     },
     mounted(){        
         // this.onResponsiveInverted()
